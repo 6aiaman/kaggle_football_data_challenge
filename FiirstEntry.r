@@ -1,7 +1,11 @@
 library(data.table)
 set.seed(1)
-my_URL <- "https://inclass.kaggle.com/c/football-data-challenge/data/c/football-data-challenge/download/test.csv"
-download.file(URL, destfile = "test.csv")
+test_URL <- "https://inclass.kaggle.com/c/football-data-challenge/data/c/football-data-challenge/download/test.csv"
+train_URL <- "https://inclass.kaggle.com/c/football-data-challenge/data/c/football-data-challenge/download/train.csv"
+example_URL <- "https://inclass.kaggle.com/c/football-data-challenge/data/c/football-data-challenge/download/submission_example.csv"
+
+
+download.file(test_URL, destfile = "test.csv")
 raw_data <- fread("test.csv")
 
 ##### Make FTR and Teams Numeric #####
