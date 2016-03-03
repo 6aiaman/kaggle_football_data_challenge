@@ -1,6 +1,8 @@
 library(data.table)
 set.seed(1)
-raw_data <- fread("C:\\Users\\bghosh\\Downloads\\train.csv")
+my_URL <- "https://inclass.kaggle.com/c/football-data-challenge/data/c/football-data-challenge/download/test.csv"
+download.file(URL, destfile = "test.csv")
+raw_data <- fread("test.csv")
 
 ##### Make FTR and Teams Numeric #####
 raw_data[,FTR_NEW:=factor(FTR,levels =c("H","D","A"),labels = c(0,1,2) )]
@@ -8,8 +10,6 @@ raw_data[,Date:=as.Date(Date)]
 team_names_vector <- as.vector(raw_data[,unique(HomeTeam)])
 raw_data[,HomeTeam_id:=factor(HomeTeam,levels = team_names_vector,labels = c(1:27))]
 raw_data[,AwayTeam_id:=factor(AwayTeam,levels =team_names_vector,labels = c(1:27))]
-
-
 
 
 data_length <- floor(nrow(raw_data)*0.8)
